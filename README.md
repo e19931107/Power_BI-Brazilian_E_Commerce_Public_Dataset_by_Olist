@@ -3,6 +3,16 @@
 ## Source 
 https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 
+
+## About Dataset
+This is a Brazilian ecommerce public dataset of orders made at Olist Store. The dataset has information of 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allow viewing an order from multiple dimensions: from order status, price, payment, and freight performance to customer location, product attributes, and finally reviews written by customers. We also released a geolocation dataset that relates Brazilian zip codes to lat/lng coordinates.
+
+This is real commercial data, it has been anonymized, and references to the companies and partners in the review text have been replaced with the names of Game of Thrones great houses.
+
+I chose 2017 as bais because 2016 and 2018 data are not complete.
+There are 4 pages,
+
+
 ## Result
 
 ### Overview
@@ -14,3 +24,5 @@ https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 ![image](https://github.com/e19931107/Power_BI-Brazilian_E_Commerce_Public_Dataset_by_Olist/assets/50692450/5dfc23bf-1095-4f24-b9fc-38d450a4a8fb)
 
 ![image](https://github.com/e19931107/Power_BI-Brazilian_E_Commerce_Public_Dataset_by_Olist/assets/50692450/3acf5d47-e93a-4076-9e1d-eb695daed4f9)
+
+DAX
