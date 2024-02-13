@@ -34,6 +34,13 @@ Product view to check the performance, including Pareto Chart.
 Since the data provide some information about latitude and longitude, so I built a page to show performance by status and city view.
 ![image](https://github.com/e19931107/Power_BI-Brazilian_E_Commerce_Public_Dataset_by_Olist/assets/50692450/3acf5d47-e93a-4076-9e1d-eb695daed4f9)
 
-DAX
-
-  % delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
+## DAX
+% delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
+Average Customer value = DIVIDE('Measure'[TTL Revenue],'Measure'[TTL customer])
+Average Flight Cost = DIVIDE('Measure'[TTL Flight Cost],'Measure'[TTL order])
+Average Order Value = DIVIDE('Measure'[TTL Revenue],'Measure'[TTL order])
+TTL customer = DISTINCTCOUNT('olist_customers_dataset'[customer_id])
+TTL delivered = CALCULATE(COUNT(olist_orders_dataset[order_status]),'olist_orders_dataset'[order_purchase_timestamp].[Year] = 2017, 'olist_orders_dataset'[order_status] = "delivered")
+TTL Flight Cost = CALCULATE(SUM('olist_order_items_dataset'[freight_value]), FILTER('olist_orders_dataset', 'olist_orders_dataset'[order_purchase_timestamp].[Year] =2017))
+TTL order = CALCULATE(COUNT(olist_orders_dataset[order_status]),'olist_orders_dataset'[order_purchase_timestamp].[Year] = 2017)
+TTL Revenue = CALCULATE(SUM('olist_order_payments_dataset'[payment_value]), FILTER('olist_orders_dataset', 'olist_orders_dataset'[order_purchase_timestamp].[Year] =2017))
