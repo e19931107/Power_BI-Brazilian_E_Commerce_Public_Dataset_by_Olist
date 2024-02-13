@@ -42,29 +42,47 @@ I built two tables, Pareto Chart in paroduct page and State and code for map pag
 
 Here are the DAX I used in Pareto Chart:
 Avg Price = AVERAGE([Price])
+
 Avg Transaction = AVERAGE([Count])
+
 Avg Value = AVERAGE([Value])
+
 Count = CALCULATE(
     COUNTROWS('olist_order_items_dataset'),
     FILTER('olist_products_dataset',
     'olist_products_dataset'[product_category_name] = 'Pareto Chart'[product_category_name]))
+
 Cumulative = 
-VAR cur_rate = [Percentage]
-RETURN CALCULATE([TTL count],FILTER(ALL('Pareto Chart'),[Percentage] >=cur_rate))
+    VAR cur_rate = [Percentage]
+    RETURN CALCULATE([TTL count],FILTER(ALL('Pareto Chart'),[Percentage] >=cur_rate))
+
 Cumulative % = DIVIDE([Cumulative],SUM('Pareto Chart'[Count]))
+
 Percentage = DIVIDE([Count],CALCULATE([TTL count],ALL('Pareto Chart')))
+
 Price = CALCULATE(AVERAGE(olist_order_items_dataset[price]), FILTER('olist_products_dataset','olist_products_dataset'[product_category_name] = 'Pareto Chart'[product_category_name]))
+
 Pareto Chart = DISTINCT('olist_products_dataset'[product_category_name])
+
 TTL count = SUM('Pareto Chart'[Count])
+
 Value = [Count]*[Price]
 
 ## DAX
 % delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
+
 Average Customer value = DIVIDE('Measure'[TTL Revenue],'Measure'[TTL customer])
+
 Average Flight Cost = DIVIDE('Measure'[TTL Flight Cost],'Measure'[TTL order])
+
 Average Order Value = DIVIDE('Measure'[TTL Revenue],'Measure'[TTL order])
+
 TTL customer = DISTINCTCOUNT('olist_customers_dataset'[customer_id])
+
 TTL delivered = CALCULATE(COUNT(olist_orders_dataset[order_status]),'olist_orders_dataset'[order_purchase_timestamp].[Year] = 2017, 'olist_orders_dataset'[order_status] = "delivered")
+
 TTL Flight Cost = CALCULATE(SUM('olist_order_items_dataset'[freight_value]), FILTER('olist_orders_dataset', 'olist_orders_dataset'[order_purchase_timestamp].[Year] =2017))
+
 TTL order = CALCULATE(COUNT(olist_orders_dataset[order_status]),'olist_orders_dataset'[order_purchase_timestamp].[Year] = 2017)
+
 TTL Revenue = CALCULATE(SUM('olist_order_payments_dataset'[payment_value]), FILTER('olist_orders_dataset', 'olist_orders_dataset'[order_purchase_timestamp].[Year] =2017))
