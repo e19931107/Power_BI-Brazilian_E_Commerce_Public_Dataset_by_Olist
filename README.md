@@ -36,4 +36,4 @@ Since the data provide some information about latitude and longitude, so I built
 
 DAX
 
-% delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
+  % delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
