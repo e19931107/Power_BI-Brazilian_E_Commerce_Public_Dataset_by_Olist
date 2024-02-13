@@ -35,4 +35,5 @@ Since the data provide some information about latitude and longitude, so I built
 ![image](https://github.com/e19931107/Power_BI-Brazilian_E_Commerce_Public_Dataset_by_Olist/assets/50692450/3acf5d47-e93a-4076-9e1d-eb695daed4f9)
 
 DAX
-  % delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
+
+% delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
