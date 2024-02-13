@@ -16,6 +16,8 @@ There are 4 pages,
 ## Result
 
 ### Overview
+This page can hlpe sales or manager to check the whole sales status in 2017.
+Therefore, this page contains key KPI.
 
 ![image](https://github.com/e19931107/Power_BI-Brazilian_E_Commerce_Public_Dataset_by_Olist/assets/50692450/a10ce187-6148-4eee-b52a-e312273df55c)
 
