@@ -34,6 +34,30 @@ Product view to check the performance, including Pareto Chart.
 Since the data provide some information about latitude and longitude, so I built a page to show performance by status and city view.
 ![image](https://github.com/e19931107/Power_BI-Brazilian_E_Commerce_Public_Dataset_by_Olist/assets/50692450/3acf5d47-e93a-4076-9e1d-eb695daed4f9)
 
+## Table
+I built two tables, Pareto Chart in paroduct page and State and code for map page.
+
+### Pareto Chart
+![image](https://github.com/e19931107/Power_BI-Brazilian_E_Commerce_Public_Dataset_by_Olist/assets/50692450/4cb38083-a1cf-481a-b7f6-bf3e0846ccb7)
+
+Here are the DAX I used in Pareto Chart:
+Avg Price = AVERAGE([Price])
+Avg Transaction = AVERAGE([Count])
+Avg Value = AVERAGE([Value])
+Count = CALCULATE(
+    COUNTROWS('olist_order_items_dataset'),
+    FILTER('olist_products_dataset',
+    'olist_products_dataset'[product_category_name] = 'Pareto Chart'[product_category_name]))
+Cumulative = 
+VAR cur_rate = [Percentage]
+RETURN CALCULATE([TTL count],FILTER(ALL('Pareto Chart'),[Percentage] >=cur_rate))
+Cumulative % = DIVIDE([Cumulative],SUM('Pareto Chart'[Count]))
+Percentage = DIVIDE([Count],CALCULATE([TTL count],ALL('Pareto Chart')))
+Price = CALCULATE(AVERAGE(olist_order_items_dataset[price]), FILTER('olist_products_dataset','olist_products_dataset'[product_category_name] = 'Pareto Chart'[product_category_name]))
+Pareto Chart = DISTINCT('olist_products_dataset'[product_category_name])
+TTL count = SUM('Pareto Chart'[Count])
+Value = [Count]*[Price]
+
 ## DAX
 % delivered success = DIVIDE('Measure'[TTL delivered],'Measure'[TTL order])
 Average Customer value = DIVIDE('Measure'[TTL Revenue],'Measure'[TTL customer])
